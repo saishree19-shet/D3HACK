@@ -22,7 +22,7 @@ function Logo({ compact = false }: { compact?: boolean }) {
         <span className="wordmark">ForgeFlow</span>
       </div>
       {!compact && (
-        <span className="descriptor">Manufacturing project coordination</span>
+        <span className="descriptor">Manufacturing operations</span>
       )}
     </div>
   )
@@ -227,20 +227,19 @@ function BrandPanel() {
         <Logo />
       </header>
       <div className="brand-content">
-        <div className="eyebrow">Projects move better together</div>
+        <div className="eyebrow">Manufacturing Operations</div>
         <h1>
           Every project.
           <br />
           Under control.
         </h1>
         <p>
-          One workspace for manufacturing progress, team coordination, and
-          delivery commitments.
+          Real-time tracking for project delivery, team coordination, and milestones.
         </p>
         <figure>
           <img
             src={FACTORY_IMAGE}
-            alt="Stainless-steel process tanks inside a manufacturing facility"
+            alt="Stainless steel process tanks in manufacturing plant"
           />
           <figcaption>
             <span>Engineering</span>
@@ -249,7 +248,7 @@ function BrandPanel() {
           </figcaption>
         </figure>
       </div>
-      <footer>© 2025 ForgeFlow Systems</footer>
+      <footer>© 2026 ForgeFlow Systems</footer>
     </aside>
   )
 }
@@ -273,7 +272,7 @@ function Shell({ children }: { children: ReactNode }) {
       <section className="form-panel">
         <div className="mobile-header">
           <Logo compact />
-          <span>Manufacturing, in sync.</span>
+          <span>Manufacturing in sync</span>
         </div>
         <div className="form-stage">{children}</div>
         <PageFooter />
@@ -285,7 +284,7 @@ function Shell({ children }: { children: ReactNode }) {
 function Header({ title, supporting }: { title: string; supporting: string }) {
   return (
     <div className="form-header">
-      <div className="form-kicker">Secure workspace access</div>
+      <div className="form-kicker">Secure access</div>
       <h2>{title}</h2>
       <p>{supporting}</p>
     </div>
@@ -326,14 +325,14 @@ function SignIn({ navigate }: { navigate: (screen: Screen) => void }) {
       setLoading(false)
       if (password.toLowerCase() === "incorrect") setAuthError(true)
       else navigate("workspace")
-    }, 900)
+    }, 800)
   }
 
   return (
     <div className="form-container">
       <Header
         title="Welcome back"
-        supporting="Sign in to continue to your workspace."
+        supporting="Sign in to access your workspace."
       />
       <form onSubmit={submit} noValidate>
         {authError && <Notice>Incorrect email or password. Try again.</Notice>}
@@ -363,11 +362,11 @@ function SignIn({ navigate }: { navigate: (screen: Screen) => void }) {
       <div className="form-switch">
         <span>New to ForgeFlow?</span>
         <LinkButton onClick={() => navigate("create")}>
-          Create an account
+          Create account
         </LinkButton>
       </div>
       <p className="demo-note">
-        For a validation demo, use “incorrect” as the password.
+        Validation test: use “incorrect” as password.
       </p>
     </div>
   )
@@ -392,7 +391,7 @@ function CreateAccount({ navigate }: { navigate: (screen: Screen) => void }) {
       return
     }
     if (values.password.length < 8) {
-      setError("Use at least 8 characters for your password.")
+      setError("Password must be 8+ characters.")
       return
     }
     if (values.password !== values.confirm) {
@@ -407,8 +406,8 @@ function CreateAccount({ navigate }: { navigate: (screen: Screen) => void }) {
   return (
     <div className="form-container form-container-wide">
       <Header
-        title="Create your workspace"
-        supporting="Bring your manufacturing projects and teams into one place."
+        title="Create workspace"
+        supporting="Coordinate projects and teams in one place."
       />
       <form onSubmit={submit} noValidate>
         {error && <Notice>{error}</Notice>}
@@ -451,8 +450,7 @@ function CreateAccount({ navigate }: { navigate: (screen: Screen) => void }) {
         <label className="agreement">
           <input type="checkbox" required />
           <span>
-            I agree to the <a href="#terms">Terms of Service</a> and{" "}
-            <a href="#privacy">Privacy Policy</a>.
+            I agree to the <a href="#terms">Terms</a> and <a href="#privacy">Privacy</a>.
           </span>
         </label>
         <Button disabled={!complete}>Create account</Button>
@@ -479,8 +477,8 @@ function ForgotPassword({ navigate }: { navigate: (screen: Screen) => void }) {
   return (
     <div className="form-container">
       <Header
-        title="Reset your password"
-        supporting="Enter your work email and we’ll send instructions to reset your password."
+        title="Reset password"
+        supporting="Enter work email for reset instructions."
       />
       <form onSubmit={submit} noValidate>
         <TextInput
@@ -510,10 +508,10 @@ function ResetSent({ navigate }: { navigate: (screen: Screen) => void }) {
       </div>
       <Header
         title="Check your email"
-        supporting="If an account exists for that email, you’ll receive password reset instructions shortly."
+        supporting="Password reset link sent to your inbox."
       />
       <Notice success>
-        Reset instructions can take a few minutes to arrive.
+        Reset email may take 1–2 minutes.
       </Notice>
       <form onSubmit={(event) => event.preventDefault()}>
         <Button secondary>Resend instructions</Button>
@@ -543,8 +541,8 @@ function OrganizationSetup({
         <span>Step 1 of 1</span>
       </div>
       <Header
-        title="Set up your organization"
-        supporting="Define the basics for your shared manufacturing workspace."
+        title="Organization profile"
+        supporting="Configure your shared workspace."
       />
       <form
         onSubmit={(event) => {
@@ -559,7 +557,7 @@ function OrganizationSetup({
             value={size}
             onChange={setSize}
           >
-            <option value="">Select a range</option>
+            <option value="">Select range</option>
             <option>1–10 employees</option>
             <option>11–50 employees</option>
             <option>51–200 employees</option>
@@ -567,11 +565,11 @@ function OrganizationSetup({
             <option>500+ employees</option>
           </SelectField>
           <SelectField
-            label="Primary manufacturing activity"
+            label="Manufacturing activity"
             value={activity}
             onChange={setActivity}
           >
-            <option value="">Select an activity</option>
+            <option value="">Select activity</option>
             <option>Process equipment fabrication</option>
             <option>Pharmaceutical equipment</option>
             <option>Food and beverage systems</option>
@@ -584,23 +582,22 @@ function OrganizationSetup({
           value={timezone}
           onChange={setTimezone}
         >
-          <option value="Asia/Kolkata">India Standard Time (UTC+05:30)</option>
+          <option value="Asia/Kolkata">India (UTC+05:30)</option>
           <option value="Europe/London">London (UTC+00:00)</option>
-          <option value="America/New_York">Eastern Time (UTC−05:00)</option>
+          <option value="America/New_York">Eastern (UTC−05:00)</option>
           <option value="Asia/Singapore">Singapore (UTC+08:00)</option>
         </SelectField>
         <Button disabled={!org || !size || !activity}>Create workspace</Button>
       </form>
       <div className="join-note">
-        <strong>Joining an existing organization?</strong>
-        <span>Ask your workspace administrator to send you an invitation.</span>
+        <strong>Joining an existing team?</strong>
+        <span>Ask your workspace admin for an invitation link.</span>
       </div>
     </div>
   )
 }
 
 type WorkspaceView = "portfolio" | "project" | "tasks" | "issues" | "activity" | "reports" | "team"
-
 type Tone = "neutral" | "blue" | "green" | "amber" | "red"
 
 const projects = [
@@ -613,7 +610,7 @@ const projects = [
     delivery: "18 Jun 2025",
     progress: 58,
     health: "At risk",
-    reason: "Agitator seal delivery is 6 days late",
+    reason: "Agitator seal delayed 6 days",
   },
   {
     code: "FF-2411",
@@ -624,7 +621,7 @@ const projects = [
     delivery: "02 Jul 2025",
     progress: 34,
     health: "On track",
-    reason: "All critical POs acknowledged",
+    reason: "All critical POs cleared",
   },
   {
     code: "FF-2403",
@@ -635,7 +632,7 @@ const projects = [
     delivery: "29 May 2025",
     progress: 82,
     health: "Attention",
-    reason: "Two weld map records pending review",
+    reason: "2 weld map records in review",
   },
   {
     code: "FF-2397",
@@ -657,22 +654,22 @@ const projects = [
     delivery: "21 Aug 2025",
     progress: 16,
     health: "On track",
-    reason: "P&ID review underway",
+    reason: "P&ID review in progress",
   },
 ]
 
 const stageSteps = [
-  { name: "Engineering", detail: "Approved 14 Mar", state: "done" },
+  { name: "Engineering", detail: "Done · 14 Mar", state: "done" },
   { name: "Procurement", detail: "23 of 26 POs", state: "done" },
-  { name: "Fabrication", detail: "In progress · 62%", state: "current" },
-  { name: "Quality", detail: "Planned 27 May", state: "next" },
-  { name: "Installation", detail: "Planned 09 Jun", state: "next" },
+  { name: "Fabrication", detail: "Active · 62%", state: "current" },
+  { name: "Quality", detail: "Due 27 May", state: "next" },
+  { name: "Installation", detail: "Due 09 Jun", state: "next" },
 ]
 
 const initialTasks = [
   {
     id: "TSK-1842",
-    name: "Complete shell course-3 longitudinal weld",
+    name: "Course-3 shell longitudinal weld",
     area: "Vessel fabrication",
     owner: "S. Patil",
     due: "Today",
@@ -682,23 +679,23 @@ const initialTasks = [
   },
   {
     id: "TSK-1851",
-    name: "Review agitator seal revised delivery plan",
+    name: "Agitator mechanical seal delivery plan",
     area: "Procurement",
     owner: "R. Mehta",
     due: "14 May",
     deadline: "3 days overdue",
     status: "Blocked",
-    dependency: "Vendor confirmation",
+    dependency: "Vendor dispatch",
   },
   {
     id: "TSK-1860",
-    name: "Prepare jacket hydro-test procedure",
+    name: "Jacket hydro-test test procedure",
     area: "Quality planning",
     owner: "M. Shah",
     due: "16 May",
-    deadline: "Due in 2 days",
+    deadline: "In 2 days",
     status: "In review",
-    dependency: "Weld completion",
+    dependency: "Weld clearance",
   },
   {
     id: "TSK-1864",
@@ -706,17 +703,17 @@ const initialTasks = [
     area: "Engineering",
     owner: "A. Rao",
     due: "17 May",
-    deadline: "Due in 3 days",
+    deadline: "In 3 days",
     status: "Not started",
-    dependency: "Client nozzle approval",
+    dependency: "Client nozzle signoff",
   },
   {
     id: "TSK-1827",
-    name: "Verify MTCs for SS316L plates",
+    name: "Verify SS316L plate test certificates",
     area: "Incoming quality",
     owner: "N. Desai",
     due: "09 May",
-    deadline: "Completed on time",
+    deadline: "Completed",
     status: "Complete",
     dependency: "None",
   },
@@ -889,7 +886,13 @@ function Toolbar({ children }: { children: ReactNode }) {
   return <div className="table-toolbar">{children}</div>
 }
 
-function Portfolio({ openProject }: { openProject: () => void }) {
+function Portfolio({
+  openProject,
+  setView,
+}: {
+  openProject: () => void
+  setView: (view: WorkspaceView) => void
+}) {
   const [filter, setFilter] = useState("All projects")
   const visible = projects.filter((project) => {
     if (filter === "At risk")
@@ -897,12 +900,114 @@ function Portfolio({ openProject }: { openProject: () => void }) {
     if (filter === "My projects") return project.owner === "Anita Rao"
     return true
   })
+
   return (
     <>
+      {/* 3 Top Hero Cards (Swasthishree Inspired) */}
+      <div className="hero-cards-grid">
+        <button
+          type="button"
+          className="hero-action-card hero-card-coral"
+          onClick={() => setFilter("All projects")}
+        >
+          <div className="hero-card-icon-pill">
+            <AppIcon name="projects" />
+          </div>
+          <h3>Project Portfolio</h3>
+          <p>5 active customer programs</p>
+        </button>
+
+        <button
+          type="button"
+          className="hero-action-card hero-card-crimson"
+          onClick={() => setView("tasks")}
+        >
+          <div className="hero-card-icon-pill">
+            <AppIcon name="tasks" />
+          </div>
+          <h3>Active Tasks</h3>
+          <p>Shop-floor work orders & status</p>
+        </button>
+
+        <button
+          type="button"
+          className="hero-action-card hero-card-tangerine"
+          onClick={() => setView("issues")}
+        >
+          <div className="hero-card-icon-pill">
+            <AppIcon name="issues" />
+          </div>
+          <h3>Delivery Blockers</h3>
+          <p>Real-time exception resolution</p>
+        </button>
+      </div>
+
+      {/* 4 Stat Metric Cards (Swasthishree Inspired) */}
+      <div className="stat-cards-grid">
+        <div className="stat-card-white">
+          <div className="stat-card-head">
+            <span className="stat-card-label">Active Projects</span>
+            <span className="stat-icon-pill stat-icon-pink">
+              <AppIcon name="projects" />
+            </span>
+          </div>
+          <div className="stat-card-value">5</div>
+          <div className="stat-card-foot">
+            <strong>4 on track</strong> · 1 at risk
+          </div>
+        </div>
+
+        <div className="stat-card-white">
+          <div className="stat-card-head">
+            <span className="stat-card-label">Overall Progress</span>
+            <span className="stat-icon-pill stat-icon-amber">
+              <AppIcon name="reports" />
+            </span>
+          </div>
+          <div className="stat-card-value">58%</div>
+          <div className="stat-card-foot">Across project baseline</div>
+        </div>
+
+        <div className="stat-card-white">
+          <div className="stat-card-head">
+            <span className="stat-card-label">Contract Value</span>
+            <span className="stat-icon-pill stat-icon-green">
+              <span style={{ fontSize: "14px", fontWeight: "800" }}>₹</span>
+            </span>
+          </div>
+          <div className="stat-card-value">₹8.4 Cr</div>
+          <div className="stat-card-foot">Verified customer orders</div>
+        </div>
+
+        <div className="stat-card-white">
+          <div className="stat-card-head">
+            <span className="stat-card-label">Deliveries</span>
+            <span className="stat-icon-pill stat-icon-peach">
+              <AppIcon name="activity" />
+            </span>
+          </div>
+          <div className="stat-card-value">2</div>
+          <div className="stat-card-foot">Committed this month</div>
+        </div>
+      </div>
+
+      {/* Featured Status Action Strip */}
+      <div className="highlight-action-strip">
+        <div className="strip-title-row">
+          <span className="strip-symbol">⚡</span>
+          <span className="strip-title">FF-2408 · 2 × 10 KL SS316L Fermenter System</span>
+          <span className="strip-pill pill-green">58% Complete</span>
+          <span className="strip-pill pill-red">4 Days Variance</span>
+        </div>
+        <button type="button" className="strip-button" onClick={openProject}>
+          Open Project →
+        </button>
+      </div>
+
       <ViewHeader
-        eyebrow="Project portfolio"
+        eyebrow="Portfolio"
         title="Manufacturing projects"
-        description="Current delivery position across active customer programs."
+        description="Delivery tracking across active programs."
         action={
           <CompactButton primary>
             <AppIcon name="plus" />
@@ -910,24 +1015,7 @@ function Portfolio({ openProject }: { openProject: () => void }) {
           </CompactButton>
         }
       />
-      <div className="portfolio-summary">
-        <div>
-          <strong>5</strong>
-          <span>Active projects</span>
-        </div>
-        <div>
-          <strong>₹8.4 Cr</strong>
-          <span>Open contract value</span>
-        </div>
-        <div>
-          <strong>1</strong>
-          <span>Project at risk</span>
-        </div>
-        <div>
-          <strong>2</strong>
-          <span>Deliveries this month</span>
-        </div>
-      </div>
+
       <section className="data-section">
         <Toolbar>
           <div className="filter-tabs">
@@ -1024,10 +1112,10 @@ function ProjectDetail({
       <ViewHeader
         eyebrow="FF-2408 · Aster Biologics"
         title="2 × 10 KL SS316L Fermenter System"
-        description="Delivery commitment: 18 June 2025 · Project manager: Anita Rao"
+        description="Delivery: 18 June 2025 · Lead: Anita Rao"
         action={
           <div className="header-actions">
-            <CompactButton>Export summary</CompactButton>
+            <CompactButton onClick={() => setView("portfolio")}>← All projects</CompactButton>
             <CompactButton primary>Update project</CompactButton>
           </div>
         }
@@ -1035,10 +1123,9 @@ function ProjectDetail({
       <div className="risk-banner">
         <AlertIcon />
         <div>
-          <strong>Delivery at risk by 4 working days</strong>
+          <strong>Delivery delayed by 4 working days</strong>
           <span>
-            Agitator mechanical seal shipment is 6 days late, blocking drive
-            assembly and dry run. Owner: Rohan Mehta · recovery plan due today.
+            Agitator seal shipment is 6 days late. Owner: Rohan Mehta.
           </span>
         </div>
         <button type="button" onClick={() => setView("issues")}>
@@ -1049,10 +1136,10 @@ function ProjectDetail({
         <div className="section-heading">
           <div>
             <h2>Manufacturing progression</h2>
-            <p>Current position against the approved project baseline.</p>
+            <p>Approved project baseline.</p>
           </div>
           <span>
-            Overall progress <strong>58%</strong>
+            Overall <strong>58%</strong>
           </span>
         </div>
         <div className="stage-track">
@@ -1073,11 +1160,11 @@ function ProjectDetail({
         <section className="data-section">
           <div className="section-heading section-heading-padded">
             <div>
-              <h2>Priority work</h2>
-              <p>Tasks requiring attention in the next five days.</p>
+              <h2>Priority tasks</h2>
+              <p>Next 5 days.</p>
             </div>
-            <button type="button" onClick={() => setView("tasks")}>
-              View all tasks
+            <button type="button" className="text-link" onClick={() => setView("tasks")}>
+              View all
             </button>
           </div>
           <div className="compact-list">
@@ -1116,7 +1203,7 @@ function ProjectDetail({
           <section className="data-section side-panel">
             <div className="section-heading">
               <h2>Open blockers</h2>
-              <button type="button" onClick={() => setView("issues")}>
+              <button type="button" className="text-link" onClick={() => setView("issues")}>
                 View all
               </button>
             </div>
@@ -1132,7 +1219,7 @@ function ProjectDetail({
                 </StatusTag>
                 <strong>{issue.title}</strong>
                 <small>
-                  {issue.owner} · Open {issue.age}
+                  {issue.owner} · {issue.age}
                 </small>
               </button>
             ))}
@@ -1150,24 +1237,21 @@ function ProjectDetail({
               </span>
             </div>
             <h3>Fabrication release to quality</h3>
-            <p>
-              5 of 7 exit criteria complete. Hydro-test procedure and drive
-              assembly remain pending.
-            </p>
+            <p>5 of 7 exit criteria complete.</p>
           </section>
         </aside>
       </div>
       <section className="data-section recent-activity">
         <div className="section-heading section-heading-padded">
           <div>
-            <h2>Recent project activity</h2>
-            <p>Latest operational changes for FF-2408.</p>
+            <h2>Recent activity</h2>
+            <p>FF-2408 updates.</p>
           </div>
-          <button type="button" onClick={() => setView("activity")}>
-            Full activity log
+          <button type="button" className="text-link" onClick={() => setView("activity")}>
+            Full log
           </button>
         </div>
-        <ActivityRows limit={4} />
+        <ActivityRows limit={3} />
       </section>
     </>
   )
@@ -1192,7 +1276,7 @@ function TasksView() {
       <ViewHeader
         eyebrow="Operations"
         title="Tasks"
-        description="Work ownership, deadlines, and dependencies across active projects."
+        description="Deadlines and dependencies across active programs."
         action={
           <CompactButton primary>
             <AppIcon name="plus" />
@@ -1242,6 +1326,7 @@ function TasksView() {
                     <button
                       className="status-button"
                       onClick={() => cycleStatus(task.id)}
+                      title="Click to cycle status"
                     >
                       <StatusTag
                         tone={
@@ -1286,8 +1371,7 @@ function TasksView() {
         </div>
       </section>
       <p className="interaction-note">
-        Select a status to move work to its next state. Blocked tasks must be
-        resolved through Issues.
+        💡 Click on status pills to advance tasks. Blocked tasks require issue resolution.
       </p>
     </>
   )
@@ -1300,7 +1384,7 @@ function IssuesView() {
       <ViewHeader
         eyebrow="Operations"
         title="Issues & blockers"
-        description="Exceptions affecting scope, quality, cost, or committed delivery dates."
+        description="Exceptions impacting scope, cost, or committed delivery."
         action={
           <CompactButton primary>
             <AppIcon name="plus" />
@@ -1350,10 +1434,7 @@ function IssuesView() {
             </StatusTag>
           </div>
           <h2>{selected.title}</h2>
-          <p>
-            {selected.impact}. This item is included in the customer delivery
-            risk calculation.
-          </p>
+          <p>{selected.impact}.</p>
           <dl>
             <div>
               <dt>Status</dt>
@@ -1367,7 +1448,7 @@ function IssuesView() {
             </div>
             <div>
               <dt>Project</dt>
-              <dd>FF-2408 · Aster Biologics</dd>
+              <dd>FF-2408 · Aster</dd>
             </div>
             <div>
               <dt>Reported</dt>
@@ -1375,15 +1456,12 @@ function IssuesView() {
             </div>
           </dl>
           <div className="resolution-block">
-            <h3>Resolution history</h3>
+            <h3>Resolution log</h3>
             <div>
               <span className="timeline-dot" />
               <strong>Vendor escalation completed</strong>
               <small>Rohan Mehta · 13 May, 16:20</small>
-              <p>
-                Vendor committed to air freight and shared revised dispatch date
-                of 15 May.
-              </p>
+              <p>Vendor confirmed air freight with revised dispatch on 15 May.</p>
             </div>
             <div>
               <span className="timeline-dot" />
@@ -1392,10 +1470,10 @@ function IssuesView() {
             </div>
           </div>
           <label className="comment-box">
-            <span>Add operational note</span>
-            <textarea placeholder="Record a decision, update, or next action…" />
+            <span>Operational note</span>
+            <textarea placeholder="Record decision or next action…" />
           </label>
-          <CompactButton primary>Add comment</CompactButton>
+          <CompactButton primary>Add note</CompactButton>
         </aside>
       </div>
     </>
@@ -1414,36 +1492,29 @@ const activityItems = [
     time: "Today, 14:05",
     actor: "Suresh Patil",
     action: "moved task TSK-1842 to In progress",
-    detail: "Shell course-3 longitudinal weld started at Bay 2.",
+    detail: "Course-3 weld started at Bay 2.",
     type: "Task",
   },
   {
     time: "Today, 11:40",
     actor: "Meera Shah",
     action: "approved inspection record IR-118",
-    detail: "Material PMI results accepted for vessel shell plates.",
+    detail: "Material PMI results accepted.",
     type: "Quality",
   },
   {
     time: "Today, 09:10",
     actor: "Anita Rao",
     action: "changed project health to At risk",
-    detail: "Forecast delivery impact recorded as four working days.",
+    detail: "Forecast delay: 4 working days.",
     type: "Project",
   },
   {
     time: "Yesterday, 17:35",
     actor: "Nikhil Desai",
     action: "completed task TSK-1827",
-    detail: "SS316L material certificates verified and filed.",
+    detail: "SS316L certificates verified.",
     type: "Task",
-  },
-  {
-    time: "Yesterday, 13:15",
-    actor: "Client reviewer",
-    action: "commented on drawing GA-2408-07",
-    detail: "Requested confirmation of N7 nozzle access clearance.",
-    type: "Document",
   },
 ]
 
@@ -1473,7 +1544,7 @@ function ActivityView() {
       <ViewHeader
         eyebrow="Audit trail"
         title="Activity log"
-        description="Timestamped operational changes across projects, tasks, quality, and issues."
+        description="Timestamped changes across operations."
       />
       <section className="data-section">
         <Toolbar>
@@ -1483,7 +1554,7 @@ function ActivityView() {
           </div>
           <div className="toolbar-actions">
             <CompactButton>Project: FF-2408</CompactButton>
-            <CompactButton>Date: Last 30 days</CompactButton>
+            <CompactButton>Date: 30 days</CompactButton>
           </div>
         </Toolbar>
         <ActivityRows />
@@ -1494,40 +1565,60 @@ function ActivityView() {
 
 function ReportsView() {
   const bars = [
-    { label: "FF-2397", planned: 92, actual: 94, status: "Ahead by 2%" },
-    { label: "FF-2403", planned: 86, actual: 82, status: "Behind by 4%" },
-    { label: "FF-2408", planned: 66, actual: 58, status: "Behind by 8%" },
-    { label: "FF-2411", planned: 35, actual: 34, status: "Behind by 1%" },
-    { label: "FF-2414", planned: 15, actual: 16, status: "Ahead by 1%" },
+    { label: "FF-2397", planned: 92, actual: 94, status: "+2%" },
+    { label: "FF-2403", planned: 86, actual: 82, status: "−4%" },
+    { label: "FF-2408", planned: 66, actual: 58, status: "−8%" },
+    { label: "FF-2411", planned: 35, actual: 34, status: "−1%" },
+    { label: "FF-2414", planned: 15, actual: 16, status: "+1%" },
   ]
   return (
     <>
       <ViewHeader
-        eyebrow="Operational reporting"
+        eyebrow="Reporting"
         title="Delivery performance"
-        description="Schedule position and unresolved work across active customer projects."
+        description="Schedule position across active customer projects."
         action={<CompactButton>Export PDF</CompactButton>}
       />
-      <div className="report-strip">
-        <div>
-          <span>On-time forecast</span>
-          <strong>3 of 5</strong>
-          <small>Active projects</small>
+      <div className="stat-cards-grid">
+        <div className="stat-card-white">
+          <div className="stat-card-head">
+            <span className="stat-card-label">On-Time Forecast</span>
+            <span className="stat-icon-pill stat-icon-green">
+              <AppIcon name="projects" />
+            </span>
+          </div>
+          <div className="stat-card-value">3 of 5</div>
+          <div className="stat-card-foot">Active projects</div>
         </div>
-        <div>
-          <span>Overdue tasks</span>
-          <strong>7</strong>
-          <small>3 critical-path</small>
+        <div className="stat-card-white">
+          <div className="stat-card-head">
+            <span className="stat-card-label">Overdue Tasks</span>
+            <span className="stat-icon-pill stat-icon-pink">
+              <AppIcon name="tasks" />
+            </span>
+          </div>
+          <div className="stat-card-value">7</div>
+          <div className="stat-card-foot">3 critical path</div>
         </div>
-        <div>
-          <span>Open issues</span>
-          <strong>11</strong>
-          <small>2 high severity</small>
+        <div className="stat-card-white">
+          <div className="stat-card-head">
+            <span className="stat-card-label">Open Blockers</span>
+            <span className="stat-icon-pill stat-icon-amber">
+              <AppIcon name="issues" />
+            </span>
+          </div>
+          <div className="stat-card-value">11</div>
+          <div className="stat-card-foot">2 high severity</div>
         </div>
-        <div>
-          <span>Average progress</span>
-          <strong>57%</strong>
-          <small>Across portfolio</small>
+        <div className="stat-card-white">
+          <div className="stat-card-head">
+            <span className="stat-card-label">Average Progress</span>
+            <span className="stat-icon-pill stat-icon-peach">
+              <AppIcon name="reports" />
+            </span>
+          </div>
+          <div className="stat-card-value">57%</div>
+          <div className="stat-card-foot">Portfolio baseline</div>
         </div>
       </div>
       <div className="reports-grid">
@@ -1535,10 +1626,7 @@ function ReportsView() {
           <div className="section-heading section-heading-padded">
             <div>
               <h2>Planned vs actual progress</h2>
-              <p>
-                Which active projects are falling behind their approved
-                baseline?
-              </p>
+              <p>Baseline comparison.</p>
             </div>
           </div>
           <div className="bar-chart">
@@ -1574,7 +1662,7 @@ function ReportsView() {
           <div className="section-heading section-heading-padded">
             <div>
               <h2>Overdue work by function</h2>
-              <p>Where is overdue work currently concentrated?</p>
+              <p>Department distribution.</p>
             </div>
           </div>
           <div className="function-list">
@@ -1604,20 +1692,17 @@ function ReportsView() {
       <section className="data-section report-table">
         <div className="section-heading section-heading-padded">
           <div>
-            <h2>Projects requiring management attention</h2>
-            <p>
-              Projects with schedule variance or unresolved high-severity
-              issues.
-            </p>
+            <h2>Schedule variances</h2>
+            <p>Active variance alerts.</p>
           </div>
         </div>
         <table className="data-table">
           <thead>
             <tr>
               <th>Project</th>
-              <th>Schedule variance</th>
-              <th>Overdue tasks</th>
-              <th>Open issues</th>
+              <th>Variance</th>
+              <th>Overdue</th>
+              <th>Issues</th>
               <th>Primary cause</th>
             </tr>
           </thead>
@@ -1630,7 +1715,7 @@ function ReportsView() {
               <td className="deadline-late">−8%</td>
               <td>3</td>
               <td>3</td>
-              <td>Agitator seal delivery delay</td>
+              <td>Agitator seal shipment delay</td>
             </tr>
             <tr>
               <td>
@@ -1652,36 +1737,18 @@ function ReportsView() {
 function TeamView() {
   const members = [
     ["Anita Rao", "Project Director", "Administrator", "5 projects", "Active"],
-    [
-      "Rohan Mehta",
-      "Procurement Lead",
-      "Project member",
-      "3 projects",
-      "Active",
-    ],
+    ["Rohan Mehta", "Procurement Lead", "Project member", "3 projects", "Active"],
     ["Meera Shah", "Quality Manager", "Project member", "4 projects", "Active"],
-    [
-      "Suresh Patil",
-      "Fabrication Supervisor",
-      "Contributor",
-      "2 projects",
-      "Active",
-    ],
+    ["Suresh Patil", "Fabrication Lead", "Contributor", "2 projects", "Active"],
     ["Nikhil Desai", "Quality Engineer", "Contributor", "2 projects", "Active"],
-    [
-      "Vikram Joshi",
-      "Site Installation Lead",
-      "Project member",
-      "1 project",
-      "Active",
-    ],
+    ["Vikram Joshi", "Site Installation", "Project member", "1 project", "Active"],
   ]
   return (
     <>
       <ViewHeader
-        eyebrow="Administration"
-        title="Team & access"
-        description="Workspace membership, roles, and project access."
+        eyebrow="Access"
+        title="Team & permissions"
+        description="Role-based workspace access."
         action={
           <CompactButton primary>
             <AppIcon name="plus" />
@@ -1691,13 +1758,10 @@ function TeamView() {
       />
       <div className="access-note">
         <div>
-          <strong>Role-based access</strong>
-          <span>
-            Administrators manage workspace settings. Project members can manage
-            assigned projects. Contributors update assigned work.
-          </span>
+          <strong>Role permissions</strong>
+          <span>Administrators manage workspace. Members manage projects. Contributors update assigned work.</span>
         </div>
-        <button type="button">Review role permissions</button>
+        <button type="button">Permissions table</button>
       </div>
       <section className="data-section">
         <Toolbar>
@@ -1706,7 +1770,7 @@ function TeamView() {
               Members <span>24</span>
             </button>
             <button>
-              Pending invites <span>2</span>
+              Invites <span>2</span>
             </button>
           </div>
           <label className="table-search">
@@ -1718,10 +1782,10 @@ function TeamView() {
           <table className="data-table team-table">
             <thead>
               <tr>
-                <th>Team member</th>
+                <th>Member</th>
                 <th>Role</th>
-                <th>Access level</th>
-                <th>Project access</th>
+                <th>Access tier</th>
+                <th>Assigned</th>
                 <th>Status</th>
                 <th />
               </tr>
@@ -1760,7 +1824,7 @@ function TeamView() {
 }
 
 function Workspace({ navigate }: { navigate: (screen: Screen) => void }) {
-  const [view, setView] = useState<WorkspaceView>("project")
+  const [view, setView] = useState<WorkspaceView>("portfolio")
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [userOpen, setUserOpen] = useState(false)
   const labels: Record<WorkspaceView, string> = {
@@ -1807,7 +1871,7 @@ function Workspace({ navigate }: { navigate: (screen: Screen) => void }) {
           <span className="org-monogram">NS</span>
           <div>
             <strong>Northstar Process</strong>
-            <small>Manufacturing workspace</small>
+            <small>Manufacturing plant</small>
           </div>
           <span>⌄</span>
         </div>
@@ -1842,8 +1906,8 @@ function Workspace({ navigate }: { navigate: (screen: Screen) => void }) {
           <div className="system-state">
             <span />
             <div>
-              <strong>All systems operational</strong>
-              <small>Last sync 2 min ago</small>
+              <strong>Systems normal</strong>
+              <small>Synced 2m ago</small>
             </div>
           </div>
           <small>ForgeFlow v1.0</small>
@@ -1892,14 +1956,14 @@ function Workspace({ navigate }: { navigate: (screen: Screen) => void }) {
                 <span className="person-avatar">AR</span>
                 <span>
                   <strong>Anita Rao</strong>
-                  <small>Project Director</small>
+                  <small>Director</small>
                 </span>
                 <span>⌄</span>
               </button>
               {userOpen && (
                 <div className="user-menu">
-                  <button>Profile settings</button>
-                  <button>Workspace settings</button>
+                  <button>Profile</button>
+                  <button>Settings</button>
                   <button onClick={() => navigate("signin")}>Sign out</button>
                 </div>
               )}
@@ -1908,7 +1972,10 @@ function Workspace({ navigate }: { navigate: (screen: Screen) => void }) {
         </header>
         <div className="app-content">
           {view === "portfolio" && (
-            <Portfolio openProject={() => setView("project")} />
+            <Portfolio
+              openProject={() => setView("project")}
+              setView={setView}
+            />
           )}
           {view === "project" && <ProjectDetail setView={setView} />}
           {view === "tasks" && <TasksView />}
