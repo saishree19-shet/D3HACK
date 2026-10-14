@@ -1,0 +1,10 @@
+{
+  "description": "Coordinate and manage customized fermenter manufacturing projects with a professional workspace designed for MSMEs in engineering, fabrication, and installation.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
